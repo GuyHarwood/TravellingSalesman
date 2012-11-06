@@ -1,4 +1,4 @@
-Travelling Salesman
+The Travelling Salesman
 ==================
 
 C# implementation of the [Travelling Salesman Problem]
