@@ -48,60 +48,21 @@ namespace GuyHarwood.TravellingSalesman
 			}
 
 			Console.WriteLine("There are {0} roads", roads.Count);
-
-			//create the roads (edges)...
-			//var dby2nts = new Road( dby, nts);
-			//var dby2mcr = new Road(dby, mcr);
-			//var dby2shf = new Road( dby, shf);
-			//var dby2rdg = new Road( dby, rdg);
-			//var nts2mcr = new Road(nts, mcr);
-			//var nts2shf = new Road(nts, shf);
-			//var nts2rdg = new Road(nts, rdg);
-			//var mcr2shf = new Road(mcr, shf);
-			//var mcr2rdg = new Road(mcr, rdg);
-			//var shf2rdg = new Road(shf, rdg);
-
-			//var manualRoads = new [] {dby2nts, dby2mcr, dby2shf, dby2rdg, nts2mcr, nts2shf, nts2rdg, mcr2shf, mcr2rdg, shf2rdg};
-
+			
 			//calculate shortest route between...
-			//var satNav = new RouteCalculator(manualRoads);
-			//satNav.AddDestination(dby);
-			//satNav.AddDestination(nts);
-			//satNav.AddDestination(mcr);
+			var satNav = new RouteCalculator(roads);
+			satNav.AddDestination(locs[0]);
+			satNav.AddDestination(locs[1]);
+			satNav.AddDestination(locs[3]);
 
-			//var route = satNav.CalculateShortestRoute();
+			var route = satNav.CalculateShortestRoute();
 
-			//foreach(var place in route)
-			//{
-			//	Console.WriteLine(place.Name);
-			//}
+			foreach (var place in route)
+			{
+				Console.WriteLine(place.Name);
+			}
 			Console.WriteLine("Press any key to exit...");
 			Console.ReadKey();
-		}
-	}
-
-	public class RouteCalculator
-	{
-		private readonly IEnumerable<Road> _mapData;
-		private readonly List<Location> _destinations;
-
-		public RouteCalculator(IEnumerable<Road> mapData)
-		{
-			_mapData = mapData;
-			_destinations = new List<Location>();
-		}
-
-		public void AddDestination(Location destination)
-		{
-			if (destination == null)
-				throw new ArgumentNullException("destination");
-
-			_destinations.Add(destination);
-		}
-
-		public Queue<Location> CalculateShortestRoute()
-		{
-			throw new NotImplementedException();
 		}
 	}
 }
