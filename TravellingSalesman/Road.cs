@@ -14,7 +14,9 @@ namespace GuyHarwood.TravellingSalesman
 
 		protected bool Equals(Road other)
 		{
-			return Equals(From, other.From) && Equals(To, other.To);
+			//It doesnt matter which location is at either end of the road, its just a road between the two
+			return ((Equals(From, other.From)) || (Equals(From, other.To))) && ((Equals(To, other.To)) || Equals(To, other.From));
+			//return Equals(From, other.From) && Equals(To, other.To);
 		}
 
 		public Road()

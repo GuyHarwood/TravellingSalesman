@@ -1,4 +1,3 @@
-using System;
 
 namespace GuyHarwood.TravellingSalesman
 {
@@ -28,7 +27,9 @@ namespace GuyHarwood.TravellingSalesman
 		}
 
 		public string Name;
-		public double Lat, Lng;
+
+		public double Lat { get; set; }
+		public double Lng { get; set; }
 
 		public override bool Equals(object obj)
 		{
