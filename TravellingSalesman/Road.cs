@@ -4,7 +4,18 @@ namespace GuyHarwood.TravellingSalesman
 {
 	public class Road
 	{
-		private double? _distance;
+		public override int GetHashCode()
+		{
+			unchecked
+			{
+				return ((From != null ? From.GetHashCode() : 0)*397) ^ (To != null ? To.GetHashCode() : 0);
+			}
+		}
+
+		protected bool Equals(Road other)
+		{
+			return Equals(From, other.From) && Equals(To, other.To);
+		}
 
 		public Road()
 		{
@@ -21,15 +32,19 @@ namespace GuyHarwood.TravellingSalesman
 		
 		public double Distance()
 		{
-			if (_distance != null)
-				return _distance.Value;
-
 			double theta = From.Lat - To.Lat;
 			double dist = Math.Sin(Deg2Rad(From.Lat)) * Math.Sin(Deg2Rad(To.Lat)) + Math.Cos(Deg2Rad(From.Lat)) * Math.Cos(Deg2Rad(To.Lat)) * Math.Cos(Deg2Rad(theta));
 			dist = Math.Acos(dist);
 			dist = Rad2Deg(dist);
-			_distance = dist * 60 * 1.1515;
-			return _distance.Value;
+			return dist * 60 * 1.1515;
+		}
+
+		public override bool Equals(object obj)
+		{
+			if (ReferenceEquals(null, obj)) return false;
+			if (ReferenceEquals(this, obj)) return true;
+			if (obj.GetType() != this.GetType()) return false;
+			return Equals((Road) obj);
 		}
 
 		private static double Deg2Rad(double deg)
