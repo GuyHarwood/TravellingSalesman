@@ -51,11 +51,11 @@ namespace GuyHarwood.TravellingSalesman
 			
 			//calculate shortest route between...
 			var satNav = new RouteCalculator(roads);
-			satNav.AddDestination(locs[0]);
 			satNav.AddDestination(locs[1]);
+			satNav.AddDestination(locs[2]);
 			satNav.AddDestination(locs[3]);
 
-			var route = satNav.CalculateShortestRoute();
+			var route = satNav.CalculateShortestRoute(locs[0]);
 
 			foreach (var place in route)
 			{

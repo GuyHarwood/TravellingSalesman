@@ -29,9 +29,13 @@ namespace GuyHarwood.TravellingSalesman
 			
 			if(_destinations.Count == 0)
 				throw new InvalidOperationException("No Destinations entered");
-			
+
+			var route = new Queue<Location>(_destinations.Count);
 			//enumerate each destination and find closest...
 
+			throw new NotImplementedException();
+
+			return route;
 		}
 	}
 }
