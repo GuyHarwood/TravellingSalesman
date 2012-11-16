@@ -22,9 +22,16 @@ namespace GuyHarwood.TravellingSalesman
 			_destinations.Add(destination);
 		}
 
-		public Queue<Location> CalculateShortestRoute()
+		public Queue<Location> CalculateShortestRoute(Location startingFrom)
 		{
-			throw new NotImplementedException();
+			if(startingFrom == null)
+				throw new ArgumentNullException("startingFrom");
+			
+			if(_destinations.Count == 0)
+				throw new InvalidOperationException("No Destinations entered");
+			
+			//enumerate each destination and find closest...
+
 		}
 	}
 }
